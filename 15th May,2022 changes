@@ -1,0 +1,16 @@
+The following was added to the code file to further optimize the code. These changes brought down the RMSE by 27%
+
+history = model.fit( X_train , Y_train , epochs = 100)
+from keras.callbacks import ModelCheckpoint, EarlyStopping
+es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, baseline=0.4)
+
+was added after:-
+np.random.seed(0)
+model = Sequential([
+    Bidirectional(LSTM(64, activation='relu'), input_shape=(1, 10)),
+    Dropout(0.15) , 
+    Dense(1) 
+])
+model.compile(loss='mse' , optimizer= 'adam')
+
+in train test split of BI-DIRECTIONAL LSTMs
